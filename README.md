@@ -1,2 +1,2 @@
-# TAGA
-The Asgard Game API
+# The Asgard Game API
+
