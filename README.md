@@ -5,27 +5,19 @@ API for games on the game server [The Asgard](https://asgrad.fun/)
 How to use
 ===========
 
-###### For Maven
-```xml
-<repositories>
-  <repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-  </repository>
-</repositories>
-```
+> ###### For Maven
 ```xml
 <dependencies>
   <dependency>
-    <groupId>com.github.TheAsgard</groupId>
+    <groupId>fun.asgard</groupId>
     <artifactId>TAGA</artifactId>
-    <version>master-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
   </dependency>
 </dependencies>  
 ```
 ____
 
-###### For Gradle
+> ###### For Gradle
 ```gradle
 allprojects {
   repositories {
