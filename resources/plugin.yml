@@ -1,0 +1,5 @@
+name: TAGA
+version: ${project.version}
+main: fun.asgard.TAGA
+api-version: 1.16
+authors: [ Volan4ik ]
