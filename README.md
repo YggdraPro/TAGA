@@ -5,7 +5,7 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
 
 [discord-invite]: https://discord.gg/QXSGvGrzDj
 [discord-shield]: https://discord.com/api/guilds/646285836500860929/widget.png
-[version]: https://img.shields.io/static/v1?label=Version&message=v1.0.0&color=blue
+[version]: https://img.shields.io/static/v1?label=Version&message=v1.0.1&color=blue
 [download]: #how-to-use
 [ ![discord-shield][] ][discord-invite]
 [ ![version][] ][download]
@@ -19,7 +19,7 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
   <dependency>
     <groupId>fun.asgard</groupId>
     <artifactId>TAGA</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1.0.1</version>
   </dependency>
 </dependencies>  
 ```
@@ -34,44 +34,69 @@ repositories {
 ```gradle
 dependencies {
   ..
-  implementation 'fun.asgard:TAGA:1.0-SNAPSHOT'
+  implementation 'fun.asgard:TAGA:v1.0.1'
 }
 ```
 
 ## Brief documentation
 
+#### Initialization
+
+```java
+public static TAGA taga;
+
+@Override
+public void onEnable() {
+  taga = new TAGA(this);
+}  
+        
+```
+
 #### Create the Game
 
 ```java
-//                     |We get the world|       |Game name|   |Game time|
-Game game = new Game(Bukkit.getWorld("world"), "ExampleGame", 5 * 60 * 20);
-TAGA.addGame(game);
+//                            |We get the world|       |Game name|    |Game time|
+Game game = taga.createGame(Bukkit.getWorld("world"), "ExampleGame", 5 * 60 * 1000);
+
+// If you want when a player is kicked, he is disconnected from the game ( Default is false )
+game.setKickOnLeave(true);
 ```
 
 #### Start the Game
 
 ```java
 //                   |Game name|
-TAGA.getGames().get("ExampleGame").start()
+taga.getGames().get("ExampleGame").start()
+```
+
+#### Creating a task for the game
+
+```java
+//                   |Game name|
+taga.getGames().get("ExampleGame").runGameTask(() -> {
+  Game game = taga.getGames().get("ExampleGame");
+  game.getPlayers().forEach(player -> player.sendMessage("1 minute of the game has passed"))
+// |Delay| |Period|
+},  1000,   60 * 1000)
 ```
 
 #### Connect a player to the game
 
 ```java
-//                   |Game name|          |The player|
-TAGA.getGames().get("ExampleGame").addPlayer(player);
+//                   |Game name|              |The player|
+taga.getGames().get("ExampleGame").connectPlayer(player);
 ```
 
 #### Disconnect a player from the game
 
 ```java
-//                   |Game name|          |The player|
-TAGA.getGames().get("ExampleGame").removePlayer(player);
+//                   |Game name|                |The player|
+taga.getGames().get("ExampleGame").disconnectPlayer(player);
 ```
 
 #### Get game players
 
 ```java
 //                   |Game name|
-TAGA.getGames().get("ExampleGame").getPlayers();
+taga.getGames().get("ExampleGame").getPlayers();
 ```
