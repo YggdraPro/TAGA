@@ -3,6 +3,13 @@
 API for creating mini-games in minecraft.
 Made by [The Asgard](https://asgrad.fun/) with love 💙 
 
+[discord-invite]: https://discord.gg/QXSGvGrzDj
+[discord-shield]: https://discord.com/api/guilds/646285836500860929/widget.png
+[version]: https://img.shields.io/static/v1?label=Version&message=v1.0.0&color=blue
+[download]: #how-to-use
+[ ![discord-shield][] ][discord-invite]
+[ ![version][] ][download]
+
 ## How to use
 
 > ###### For Maven
