@@ -20,16 +20,13 @@ ____
 
 > ###### For Gradle
 ```gradle
-allprojects {
-  repositories {
-    ...
-    mavencentral()
-  }
+repositories {
+  mavenCentral()
 }
 ```
 ```gradle
 dependencies {
-  ...
+  ..
   implementation 'fun.asgard:TAGA:1.0-SNAPSHOT'
 }
 ```
