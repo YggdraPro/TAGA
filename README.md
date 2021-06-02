@@ -1,6 +1,7 @@
 # The Asgard Game API
 
-API for games on the game server [The Asgard](https://asgrad.fun/)
+API for creating mini-games in minecraft.
+Made by [The Asgard](https://asgrad.fun/) with love 💙 
 
 ## How to use
 
