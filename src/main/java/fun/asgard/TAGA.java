@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 public final class TAGA implements Listener {
 
+    private static final String VERSION = "v1.0.1";
     private final HashMap<String, Game> games = new HashMap<>();
     private final Plugin plugin;
 
@@ -18,8 +19,14 @@ public final class TAGA implements Listener {
         plugin.getServer().getPluginManager().registerEvents(new fun.asgard.Listener(this), plugin);
     }
 
-    public void createGame(World world, String gameName, long timer) {
-        this.addGame(gameName, new Game(this.plugin, world, gameName, timer));
+    public Game createGame(World world, String gameName, long timer) {
+        Game game = new Game(this.plugin, world, gameName, timer);
+        this.addGame(gameName, game);
+        return game;
+    }
+
+    public static String getVersion() {
+        return VERSION;
     }
 
     @Deprecated
