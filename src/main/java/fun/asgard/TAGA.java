@@ -1,30 +1,39 @@
 package fun.asgard;
 
 import fun.asgard.objects.Game;
+import org.bukkit.World;
+import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashSet;
+import java.util.HashMap;
 
-public final class TAGA extends JavaPlugin {
+public final class TAGA implements Listener {
 
-    private static final HashSet<Game> games = new HashSet<>();
+    private final HashMap<String, Game> games = new HashMap<>();
+    private final Plugin plugin;
 
-    @Override
-    public void onEnable() {
-
+    public TAGA(Plugin plugin) {
+        this.plugin = plugin;
+        plugin.getServer().getPluginManager().registerEvents(new fun.asgard.Listener(this), plugin);
     }
 
-    @Override
-    public void onDisable() {
-
+    public void createGame(World world, String gameName, long timer) {
+        this.addGame(gameName, new Game(this.plugin, world, gameName, timer));
     }
 
-    public static void addGame(Game game) {
-        games.add(game);
+    @Deprecated
+    public void addGame(String name, Game game) {
+        this.games.put(name, game);
     }
 
-    public static HashSet<Game> getGames() {
-        return games;
+    @Deprecated
+    public void addGame(Game game) {
+        this.games.put(game.getGameName(), game);
+    }
+
+    public HashMap<String, Game> getGames() {
+        return this.games;
     }
 
 }
