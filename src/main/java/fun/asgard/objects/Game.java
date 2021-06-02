@@ -3,6 +3,7 @@ package fun.asgard.objects;
 import fun.asgard.events.GameStartEvent;
 import fun.asgard.events.GameStopEvent;
 import fun.asgard.events.PlayerConnectEvent;
+import fun.asgard.events.PlayerDisconnectEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -96,6 +97,7 @@ public class Game {
 
     public void disconnectPlayer(Player player) {
         this.players.remove(player);
+        this.plugin.getServer().getPluginManager().callEvent(new PlayerDisconnectEvent(this, player));
     }
 
     public HashSet<Player> getPlayers() {
