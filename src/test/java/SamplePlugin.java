@@ -16,9 +16,9 @@ public class SamplePlugin extends JavaPlugin implements Listener {
     public void onEnable() {
         taga = new TAGA(this);
 
-        taga.createGame(Bukkit.getWorld("world"), "SampleGame", 5 * 1000);
-
-        taga.createGame(Bukkit.getWorld("world"), "SampleGame2", 5 * 1000);
+        Game game1 = taga.createGame(Bukkit.getWorld("world"), "SampleGame", 5 * 1000);
+        Game game2 = taga.createGame(Bukkit.getWorld("world"), "SampleGame2", 5 * 1000);
+        game2.setKickOnLeave(true);
     }
 
     @Override
