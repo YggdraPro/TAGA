@@ -10,24 +10,26 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class SamplePlugin extends JavaPlugin implements Listener {
 
+    public static TAGA taga;
+
     @Override
     public void onEnable() {
-        Game game = new Game(Bukkit.getWorld("world"), "SampleGame", 5 * 60 * 20);
-        TAGA.addGame(game);
+        taga = new TAGA(this);
 
-        Game game2 = new Game(Bukkit.getWorld("world"), "SampleGame2", 5 * 60 * 20);
-        TAGA.addGame("ABOBA", game);
+        taga.createGame(Bukkit.getWorld("world"), "SampleGame", 5 * 1000);
+
+        taga.createGame(Bukkit.getWorld("world"), "SampleGame2", 5 * 1000);
     }
 
     @Override
     public void onDisable() {
-        TAGA.getGames().forEach((name, game) -> game.shutdown(false));
+        taga.getGames().forEach((name, game) -> game.shutdown(false));
     }
 
     @EventHandler
     public void onPlayerJoined(PlayerJoinEvent event) {
-        Game game = TAGA.getGames().get("ABOBA");
-        game.addPlayer(event.getPlayer());
+        Game game = taga.getGames().get("ABOBA");
+        game.connectPlayer(event.getPlayer());
         if (game.getPlayers().size() >= 1) {
             game.start();
         }
@@ -38,6 +40,9 @@ public class SamplePlugin extends JavaPlugin implements Listener {
         event.getPlayers().forEach(player -> {
             player.sendMessage("Game is started!");
         });
+        event.getGame().runGameTask(() -> {
+
+        }, 34, 5);
     }
 
     @EventHandler
