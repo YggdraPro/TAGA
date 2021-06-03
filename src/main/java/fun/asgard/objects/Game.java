@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -20,9 +21,10 @@ public class Game {
     private final World world;
     private final String gameName;
     private final Plugin plugin;
+    private long started;
     private long time;
     private final HashSet<Player> players = new HashSet<>();
-    private boolean kickOnLeave = false;
+    private boolean leaveOnKick = false;
 
     /**
      *
@@ -41,6 +43,7 @@ public class Game {
      * After calling the method, GameStartEvent will be triggered
      */
     public void start() {
+        this.started = System.currentTimeMillis();
         Bukkit.getPluginManager().callEvent(new GameStartEvent(this, this.players.toArray(new Player[0])));
     }
 
@@ -100,6 +103,10 @@ public class Game {
         this.plugin.getServer().getPluginManager().callEvent(new PlayerDisconnectEvent(this, player));
     }
 
+    public long getWhenStarted() {
+        return started;
+    }
+
     public HashSet<Player> getPlayers() {
         return players;
     }
@@ -121,11 +128,11 @@ public class Game {
     }
 
     public void setKickOnLeave(boolean kickOnLeave) {
-        this.kickOnLeave = kickOnLeave;
+        this.leaveOnKick = kickOnLeave;
     }
 
-    public boolean isKickOnLeave() {
-        return kickOnLeave;
+    public boolean isLeaveOnKick() {
+        return leaveOnKick;
     }
 
     @Override

@@ -16,19 +16,19 @@ public class SamplePlugin extends JavaPlugin implements Listener {
     public void onEnable() {
         taga = new TAGA(this);
 
-        Game game1 = taga.createGame(Bukkit.getWorld("world"), "SampleGame", 5 * 1000);
-        Game game2 = taga.createGame(Bukkit.getWorld("world"), "SampleGame2", 5 * 1000);
+        Game game1 = taga.getGameManager().createGame(Bukkit.getWorld("world"), "SampleGame", 5 * 1000);
+        Game game2 = taga.getGameManager().createGame(Bukkit.getWorld("world"), "SampleGame2", 5 * 1000);
         game2.setKickOnLeave(true);
     }
 
     @Override
     public void onDisable() {
-        taga.getGames().forEach((name, game) -> game.shutdown(false));
+        taga.getGameManager().getGames().forEach((name, game) -> game.shutdown(false));
     }
 
     @EventHandler
     public void onPlayerJoined(PlayerJoinEvent event) {
-        Game game = taga.getGames().get("ABOBA");
+        Game game = taga.getGameManager().getGames().get("ABOBA");
         game.connectPlayer(event.getPlayer());
         if (game.getPlayers().size() >= 1) {
             game.start();
@@ -40,9 +40,10 @@ public class SamplePlugin extends JavaPlugin implements Listener {
         event.getPlayers().forEach(player -> {
             player.sendMessage("Game is started!");
         });
-        event.getGame().runGameTask(() -> {
-
-        }, 34, 5);
+        event.getGame().runGameTask(() ->
+                event.getPlayers().forEach(player ->
+                        player.sendMessage("5 minutes of the game has passed!")),
+                5 * 60 * 1000, 5 * 60 * 1000);
     }
 
     @EventHandler
