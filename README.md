@@ -12,10 +12,29 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
 
 ## How to use
 
+#### Requires **[PaperMC 1.16.5](https://papermc.io/downloads)** or **higher**.
+
 > ###### For Maven
 ```xml
+<repositories>
+  <repository>
+    <id>papermc-repo</id>
+    <url>https://papermc.io/repo/repository/maven-public/</url>
+  </repository>
+  <repository>
+    <id>sonatype</id>
+    <url>https://oss.sonatype.org/content/groups/public/</url>
+  </repository>
+</repositories>
+```
+```xml
 <dependencies>
-  ...
+  <dependency>
+    <groupId>com.destroystokyo.paper</groupId>
+    <artifactId>paper-api</artifactId>
+    <version>1.16.5-R0.1-SNAPSHOT</version>
+    <scope>provided</scope>
+  </dependency>
   <dependency>
     <groupId>fun.asgard</groupId>
     <artifactId>TAGA</artifactId>
@@ -29,11 +48,14 @@ ____
 ```gradle
 repositories {
   mavenCentral()
+  maven {
+    url 'https://papermc.io/repo/repository/maven-public/'
+  }
 }
 ```
 ```gradle
 dependencies {
-  ..
+  compileOnly 'com.destroystokyo.paper:paper-api:1.16.5-R0.1-SNAPSHOT'
   implementation 'fun.asgard:TAGA:v1.0.1'
 }
 ```
