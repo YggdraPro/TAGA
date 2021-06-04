@@ -61,7 +61,7 @@ dependencies {
 }
 ```
 
-## Brief documentation
+## Brief Guide
 
 ### Initialization
 
