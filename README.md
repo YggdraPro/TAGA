@@ -3,12 +3,26 @@
 API for creating mini-games in minecraft.
 Made by [The Asgard](https://asgrad.fun/) with love 💙 
 
+[latest-version]: v1.1.0
+
 [discord-invite]: https://discord.gg/QXSGvGrzDj
 [discord-shield]: https://discord.com/api/guilds/646285836500860929/widget.png
-[version]: https://img.shields.io/static/v1?label=Version&message=v1.1.0&color=blue
+
+[discord]: https://img.shields.io/badge/Our-discord-blue?style=for-the-badge&logo=discord
+
+[version]: https://img.shields.io/badge/Version-v1.1.0-success?style=for-the-badge&logo=wiki
 [download]: #how-to-use
-[ ![discord-shield][] ][discord-invite]
-[ ![version][] ][download]
+
+[wiki]: https://img.shields.io/badge/-Our%20wiki-yellow?style=for-the-badge&logo=wiki
+[wiki-url]: https://github.com/TheAsgard/TAGA/wiki
+
+[docs]: https://img.shields.io/badge/Our%20documentation-v1.1.0-important?style=for-the-badge&logo=wiki
+[docs-url]: https://github.com/TheAsgard/TAGA/wiki/Documentation
+
+[![version][]][download]
+[![wiki][]][wiki-url]
+[![docs][]][docs-url]
+[![discord][]][discord-invite]
 
 ## How to use
 
@@ -62,6 +76,8 @@ dependencies {
 ```
 
 ## Brief Guide
+
+**PLEASE READ [ OUR DOCUMENTATION ][docs-url] ALSO! THIS GUIDE IS NOT ALL THE POSSIBILITIES OF OUR API!**
 
 ### Initialization
 
@@ -154,3 +170,6 @@ game.runGameTask(() -> {
 //|Delay| |Period|
 }, 1000, 60 * 1000)
 ```
+
+**If you have any problems, write to us in the** 
+[ ![discord-shield][] ][discord-invite]
