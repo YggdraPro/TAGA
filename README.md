@@ -38,7 +38,7 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
   <dependency>
     <groupId>fun.asgard</groupId>
     <artifactId>TAGA</artifactId>
-    <version>v1.1.1</version>
+    <version>v1.1.0</version>
   </dependency>
 </dependencies>  
 ```
