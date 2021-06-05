@@ -6,23 +6,16 @@
 
     <groupId>fun.asgard</groupId>
     <artifactId>TAGA</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1.1.1</version>
     <packaging>jar</packaging>
 
     <name>TAGA</name>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>github</id>
-            <name>GitHub TheAsgard Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/TheAsgard/TAGA</url>
-        </repository>
-    </distributionManagement>
 
     <build>
         <plugins>
