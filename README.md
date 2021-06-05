@@ -72,7 +72,7 @@ dependencies {
 ### Initialization
 
 ```java
-public TAGA taga = new TAGA(this);;     
+public TAGA taga = new TAGA(this);    
 ```
 
 ____
