@@ -5,6 +5,7 @@ import fun.asgard.events.GameStopEvent;
 import fun.asgard.events.PlayerConnectEvent;
 import fun.asgard.events.PlayerDisconnectEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -12,6 +13,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -21,9 +24,12 @@ public class Game {
     private final World world;
     private final String gameName;
     private final Plugin plugin;
+
+    private final HashSet<Player> players = new HashSet<>();
+    private final HashSet<Timer> tasks = new HashSet<>();
+
     private long started;
     private long time;
-    private final HashSet<Player> players = new HashSet<>();
     private boolean leaveOnKick = false;
 
     /**
@@ -43,6 +49,11 @@ public class Game {
      * After calling the method, GameStartEvent will be triggered
      */
     public void start() {
+        if (this.world.getLoadedChunks().length <= 0
+                || !this.plugin.getServer().getWorlds().contains(this.world)) {
+            this.plugin.getServer().getWorlds().add(this.world);
+        }
+
         this.started = System.currentTimeMillis();
         Bukkit.getPluginManager().callEvent(new GameStartEvent(this, this.players.toArray(new Player[0])));
     }
@@ -83,14 +94,27 @@ public class Game {
      * After calling the method, no event will be triggered
      */
     public void shutdown(boolean saveWorld) {
-        Bukkit.unloadWorld(this.world, saveWorld);
         this.time = 0;
-        this.players.clear();
+        this.getTasks().forEach(Timer::cancel);
+        this.players.forEach(this::disconnectPlayer);
+        Bukkit.unloadWorld(this.world, saveWorld);
     }
 
     public void runGameTask(@NotNull Runnable task, long delay, long period) {
-        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-        scheduler.scheduleAtFixedRate(task, delay, period, TimeUnit.MILLISECONDS);
+        if (delay < 0)
+            throw new IllegalArgumentException("Negative delay.");
+        if (period <= 0)
+            throw new IllegalArgumentException("Non-positive period.");
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                task.run();
+            }
+        }, delay, period);
+
+        this.getTasks().add(timer);
     }
 
     public void connectPlayer(Player player) {
@@ -98,9 +122,37 @@ public class Game {
         this.plugin.getServer().getPluginManager().callEvent(new PlayerConnectEvent(this, player));
     }
 
+    public void connectPlayer(Player player, Location location) {
+        this.players.add(player);
+        player.teleport(location);
+        this.plugin.getServer().getPluginManager().callEvent(new PlayerConnectEvent(this, player));
+    }
+
+    public void connectPlayer(Player player, double x, double y, double z) {
+        this.players.add(player);
+        player.teleport(new Location(this.world, x, y, z));
+        this.plugin.getServer().getPluginManager().callEvent(new PlayerConnectEvent(this, player));
+    }
+
     public void disconnectPlayer(Player player) {
         this.players.remove(player);
         this.plugin.getServer().getPluginManager().callEvent(new PlayerDisconnectEvent(this, player));
+    }
+
+    public void disconnectPlayer(Player player, Location location) {
+        this.players.remove(player);
+        player.teleport(location);
+        this.plugin.getServer().getPluginManager().callEvent(new PlayerDisconnectEvent(this, player));
+    }
+
+    public void disconnectPlayer(Player player, double x, double y, double z) {
+        this.players.remove(player);
+        player.teleport(new Location(this.world, x, y, z));
+        this.plugin.getServer().getPluginManager().callEvent(new PlayerDisconnectEvent(this, player));
+    }
+
+    public HashSet<Timer> getTasks() {
+        return tasks;
     }
 
     public long getWhenStarted() {
