@@ -6,7 +6,7 @@ import org.bukkit.plugin.Plugin;
 public final class TAGA implements Listener {
 
     private final GameManager gm;
-    private static final String VERSION = "v1.1.0";
+    private static final String VERSION = "v1.1.1";
     protected final Plugin plugin;
 
     public TAGA (Plugin plugin) {
