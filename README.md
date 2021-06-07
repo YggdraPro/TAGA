@@ -4,8 +4,6 @@
 API for creating mini-games in minecraft.
 Made by [The Asgard](https://asgrad.fun/) with love 💙 
 
-[latest-version]: v1.1.1
-
 [discord-invite]: https://discord.gg/QXSGvGrzDj
 [discord-shield]: https://discord.com/api/guilds/646285836500860929/widget.png
 
@@ -17,7 +15,7 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
 [wiki]: https://img.shields.io/badge/-Our%20wiki-yellow?style=for-the-badge&logo=wiki
 [wiki-url]: https://github.com/TheAsgard/TAGA/wiki
 
-[docs]: https://img.shields.io/badge/Our%20documentation-v1.1.1-important?style=for-the-badge&logo=wiki
+[docs]: https://img.shields.io/badge/Our%20documentation-v1.2.0--ALPHA-important?style=for-the-badge&logo=wiki
 [docs-url]: https://github.com/TheAsgard/TAGA/wiki/Documentation
 
 [java]: https://img.shields.io/badge/Java-11.0.11-green?style=for-the-badge&logo=java
