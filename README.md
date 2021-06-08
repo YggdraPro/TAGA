@@ -18,14 +18,14 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
 [docs]: https://img.shields.io/badge/Our%20documentation-v1.2.0--ALPHA-important?style=for-the-badge&logo=wiki
 [docs-url]: https://github.com/TheAsgard/TAGA/wiki/Documentation
 
-[java]: https://img.shields.io/badge/Java-11.0.11-green?style=for-the-badge&logo=java
-[java-url]: https://www.oracle.com/ru/java/technologies/javase-jdk11-downloads.html
+[minecraft]: https://img.shields.io/badge/Minecraft-1.16.5-red?style=for-the-badge&logo=mojang-studios
+[minecraft-url]: https://www.minecraft.net/
 
 [![version][]][download]
 [![wiki][]][wiki-url]
 [![docs][]][docs-url]
+[![minecraft][]][minecraft-url]
 [![discord][]][discord-invite]
-[![java][]][java-url]
 
 [papermc-url]: https://papermc.io/
 [spigotmc-url]: https://www.spigotmc.org/
@@ -34,7 +34,8 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
 
 ## How to use
 
-#### Works with [PaperMC][papermc-url], [SpigotMC][spigotmc-url], [Mohist][mohist-url], [CraftBukkit][bukkit-url] etc.
+Requires [**Minecraft 1.16.5**][minecraft-url] or **higher**.
+Works with [PaperMC][papermc-url], [SpigotMC][spigotmc-url], [MohistMC][mohist-url], [CraftBukkit][bukkit-url] etc. 
 
 > #### For Maven
 ```xml
@@ -60,8 +61,6 @@ dependencies {
   implementation 'fun.asgard:TAGA:v1.1.1'
 }
 ```
-
-#### Requires **[Java 11.0.11][java-url]** or **higher**.
 
 ## Brief Guide
 
