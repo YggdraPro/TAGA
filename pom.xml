@@ -18,9 +18,9 @@
 
     <distributionManagement>
         <repository>
-            <id>com.github.TheAsgard</id>
-            <name>TAGA</name>
-            <url>https://github.com/TheAsgard/TAGA</url>
+            <id>github</id>
+            <name>GitHub TheAsgard Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/TheAsgard/TAGA</url>
         </repository>
     </distributionManagement>
          
