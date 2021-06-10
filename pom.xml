@@ -16,7 +16,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-
+    <distributionManagement>
+        <repository>
+            <id>com.github.TheAsgard</id>
+            <name>TAGA</name>
+            <url>https://github.com/TheAsgard/TAGA</url>
+        </repository>
+    </distributionManagement>
+         
     <build>
         <plugins>
             <plugin>
