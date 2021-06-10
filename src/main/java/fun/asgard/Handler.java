@@ -14,7 +14,7 @@ public class Handler implements Listener {
     private final TAGA pl;
     private final Plugin client;
 
-    public Handler(TAGA taga, Plugin client) {
+    protected Handler(TAGA taga, Plugin client) {
         this.pl = taga;
         this.client = client;
     }
