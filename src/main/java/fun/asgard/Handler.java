@@ -1,7 +1,7 @@
 package fun.asgard;
 
-import fun.asgard.api.events.GamePlayerDeathEvent;
-import fun.asgard.api.objects.GamePlayer;
+import fun.asgard.api.events.gameplayerevents.GamePlayerDeathEvent;
+import fun.asgard.api.objects.game.GamePlayer;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,8 +23,8 @@ public class Handler implements Listener {
     public void onPlayerKick(PlayerKickEvent event) {
         this.pl.getGameManager().getGames().forEach((name, game) -> {
             if (game.isLeaveOnKick()
-                    && game.getPlayers().containsKey(event.getPlayer())) {
-                game.disconnectPlayer(game.getPlayers().get(event.getPlayer()));
+                    && game.getPlayersManager().getPlayers().containsKey(event.getPlayer())) {
+                game.getPlayersManager().disconnectPlayer(game.getPlayersManager().getPlayers().get(event.getPlayer()));
             }
         });
     }
@@ -32,8 +32,8 @@ public class Handler implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         this.pl.getGameManager().getGames().forEach((name, game) -> {
-            if (game.getPlayers().containsKey(event.getEntity())) {
-                GamePlayer gp = game.getPlayers().get(event.getEntity());
+            if (game.getPlayersManager().getPlayers().containsKey(event.getEntity())) {
+                GamePlayer gp = game.getPlayersManager().getPlayers().get(event.getEntity());
                 gp.setDied(true);
                 this.client.getServer().getPluginManager()
                         .callEvent(new GamePlayerDeathEvent(game, gp));

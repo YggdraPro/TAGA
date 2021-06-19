@@ -1,13 +1,10 @@
-package fun.asgard.api.objects;
+package fun.asgard.api.objects.game;
 
-import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.entity.Player;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
-public interface Game {
+public interface BaseGame {
 
     /**
      * After calling the method, GameStartEvent will be triggered
@@ -39,23 +36,8 @@ public interface Game {
      */
     void shutdown(boolean saveWorld);
 
-    void connectPlayer(Player player);
-
-    void connectPlayer(Player player, Location location);
-
-    void connectPlayer(Player player, double x, double y, double z);
-
-    void disconnectPlayer(GamePlayer player);
-
-    void disconnectPlayer(GamePlayer player, Location location);
-
-    void disconnectPlayer(GamePlayer player, double x, double y, double z);
-
-    HashSet<GameTask> getTasks();
 
     long getWhenStarted();
-
-    HashMap<Player,GamePlayer> getPlayers();
 
     long getTime();
 
@@ -63,12 +45,12 @@ public interface Game {
 
     World getWorld();
 
-    GameTask getTask();
-
     void setTime(long time);
 
-    void setKickOnLeave(boolean kickOnLeave);
+    void setLeaveOnKick(boolean kickOnLeave);
 
     boolean isLeaveOnKick();
+
+    boolean isTeamGame();
 
 }
