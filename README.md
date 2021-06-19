@@ -9,7 +9,7 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
 
 [discord]: https://img.shields.io/badge/Our-discord-blue?style=for-the-badge&logo=discord
 
-[version]: https://img.shields.io/badge/Version-v1.2.0-success?style=for-the-badge&logo=wiki
+[version]: https://img.shields.io/badge/Version-v1.3.0-success?style=for-the-badge&logo=wiki
 [download]: #how-to-use
 
 [wiki]: https://img.shields.io/badge/-Our%20wiki-yellow?style=for-the-badge&logo=wiki
@@ -18,7 +18,7 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
 [docs]: https://img.shields.io/badge/Our%20documentation-v1.2.0-important?style=for-the-badge&logo=wiki
 [docs-url]: https://github.com/TheAsgard/TAGA/wiki/Documentation
 
-[minecraft]: https://img.shields.io/badge/Minecraft-1.16.5-red?style=for-the-badge&logo=mojang-studios
+[minecraft]: https://img.shields.io/badge/Minecraft-1.17-red?style=for-the-badge&logo=mojang-studios
 [minecraft-url]: https://www.minecraft.net/
 
 [![version][]][download]
@@ -34,7 +34,7 @@ Made by [The Asgard](https://asgrad.fun/) with love 💙
 
 ## How to use
 
-Requires [**Minecraft 1.16.5**][minecraft-url] or **higher**.
+Requires [**Minecraft 1.17**][minecraft-url]
 Works with [PaperMC][papermc-url], [SpigotMC][spigotmc-url], [MohistMC][mohist-url], [CraftBukkit][bukkit-url] etc. 
 
 > #### For Maven
@@ -43,7 +43,7 @@ Works with [PaperMC][papermc-url], [SpigotMC][spigotmc-url], [MohistMC][mohist-u
   <dependency>
     <groupId>fun.asgard</groupId>
     <artifactId>TAGA</artifactId>
-    <version>v1.2.0</version>
+    <version>v1.3.0</version>
   </dependency>
 </dependencies>  
 ```
@@ -58,7 +58,7 @@ repositories {
 ```
 ```gradle
 dependencies {
-  implementation 'fun.asgard:TAGA:v1.2.0'
+  implementation 'fun.asgard:TAGA:v1.3.0'
 }
 ```
 
