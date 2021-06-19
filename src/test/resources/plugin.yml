@@ -1,0 +1,5 @@
+name: SamplePlugin
+version: ${project.version}
+main: SamplePlugin
+api-version: 1.16
+authors: [ Volan4ik ]
